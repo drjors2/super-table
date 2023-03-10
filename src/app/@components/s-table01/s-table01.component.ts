@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PeriodicElemStoreService } from './../../@store/periodic-elem-store.service';
-import { PeColumns } from './../../common/model';
-
+import { OrderCols, PeriodicElement } from './../../common/model';
 /**
  * @title Basic use of `<table mat-table>`
  */
@@ -10,8 +9,10 @@ import { PeColumns } from './../../common/model';
   templateUrl: './s-table01.component.html',
   styleUrls: ['./s-table01.component.scss'],
 })
-export class STable01Component {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+export class STable01Component<T> {
+  @Input() columns: OrderCols<T>[] = [];
   constructor(public pess: PeriodicElemStoreService) {}
-  PeColumns = PeColumns;
+  get columnNames() {
+    return this.columns.map(({ column }) => column);
+  }
 }
