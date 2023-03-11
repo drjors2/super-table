@@ -5,7 +5,7 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-export interface OrderCols<T> {
+export interface Cols<T> {
   column: keyof T;
   label: string;
   options: {
@@ -13,7 +13,7 @@ export interface OrderCols<T> {
   };
 }
 
-export const PeColumns: OrderCols<PeriodicElement>[] = [
+export const PeColumns: Cols<PeriodicElement>[] = [
   // ['position', 'Pos'],
   ['name', 'Name'],
   ['weight', 'Weight'],
@@ -24,7 +24,7 @@ export const PeColumns: OrderCols<PeriodicElement>[] = [
   ],
 ].map(
   ([column, label, urlFun]) =>
-    ({ column, label, options: { urlFun } } as OrderCols<PeriodicElement>)
+    ({ column, label, options: { urlFun } } as Cols<PeriodicElement>)
 );
 
 export const ELEMENT_DATA: PeriodicElement[] = [
